@@ -75,7 +75,7 @@ console.log(apiUrl);
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-gray-600">
+        <p className="mt-6 text-center text-sm text-red-200">
           Already have an account?{" "}
           <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500">
             Sign in here

@@ -9,7 +9,7 @@ export default function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/register", formData);
+      await axios.post("https://pulse-assesment.azurewebsites.net/api/auth/register", formData);
       alert("Registration successful! Please login.");
       navigate("/login");
     } catch (err) {

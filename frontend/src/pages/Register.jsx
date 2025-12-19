@@ -11,7 +11,7 @@ console.log(apiUrl);
     e.preventDefault();
     try {
 
-      await axios.post("https://pulse-assesment.azurewebsites.net/api/auth/register", formData);
+      await axios.post(`${apiUrl}/api/auth/register`, formData);
       alert("Registration successful! Please login.");
       navigate("/login");
     } catch (err) {

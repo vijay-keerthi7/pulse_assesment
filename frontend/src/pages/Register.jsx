@@ -5,11 +5,12 @@ import axios from "axios";
 export default function Register() {
   const [formData, setFormData] = useState({ name: "", email: "", password: "", role: "user" });
   const navigate = useNavigate();
-
+const apiUrl = import.meta.env.VITE_BACKEND;
+console.log(apiUrl);
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/auth/register", formData);
+      await axios.post(`${apiUrl}/api/auth/register`, formData);
       alert("Registration successful! Please login.");
       navigate("/login");
     } catch (err) {

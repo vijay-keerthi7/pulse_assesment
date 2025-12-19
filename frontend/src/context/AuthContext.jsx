@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 export const AuthContext = createContext();
+const apiUrl = import.meta.env.VITE_BACKEND;
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -23,7 +24,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     // Ensure URL matches your server.js prefix
-    const res = await axios.post("http://localhost:5000/api/auth/login", { email, password });
+    const res = await axios.post(`${apiUrl}/api/auth/login`, { email, password });
     setUser(res.data);
     localStorage.setItem("user", JSON.stringify(res.data));
     return res.data;

@@ -9,10 +9,14 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+const apiUrl = import.meta.env.VITE_BACKEND;
+
+
+
   const fetchVideos = async () => {
     if (!user?.token) return;
     try {
-      const res = await axios.get("http://localhost:5000/api/videos", {
+      const res = await axios.get(`${apiUrl}/api/videos`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
       setVideos(res.data);
@@ -30,7 +34,7 @@ export default function Dashboard() {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this video?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/videos/${id}`, {
+      await axios.delete(`${apiUrl}/api/videos/${id}`, {
         headers: { Authorization: `Bearer ${user.token}` }
       });
       setVideos(videos.filter(v => v._id !== id));
@@ -43,7 +47,7 @@ export default function Dashboard() {
     const newTitle = prompt("New title:", video.title);
     if (!newTitle) return;
     try {
-      const res = await axios.put(`http://localhost:5000/api/videos/${video._id}`, 
+      const res = await axios.put(`${apiUrl}/api/videos/${video._id}`, 
         { title: newTitle },
         { headers: { Authorization: `Bearer ${user.token}` }}
       );
@@ -56,7 +60,7 @@ export default function Dashboard() {
   const toggleStatus = async (video) => {
     const nextStatus = video.status === "safe" ? "flagged" : "safe";
     try {
-      const res = await axios.put(`http://localhost:5000/api/videos/${video._id}`, 
+      const res = await axios.put(`${apiUrl}/api/videos/${video._id}`, 
         { status: nextStatus },
         { headers: { Authorization: `Bearer ${user.token}` }}
       );
@@ -89,7 +93,7 @@ export default function Dashboard() {
               <div key={video._id} className="bg-white p-4 rounded-lg shadow-sm border flex flex-col">
                 <div className="aspect-video bg-black mb-3 rounded overflow-hidden">
                    <video 
-                     src={`http://localhost:5000/api/videos/${video._id}?token=${user.token}`} 
+                     src={`${apiUrl}/api/videos/${video._id}?token=${user.token}`} 
                      controls 
                      className="w-full h-full"
                    />

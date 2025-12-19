@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 
 export default function VideoPlayer() {
   const { id } = useParams();
+  const apiUrl = import.meta.env.VITE_BACKEND;
 
   return (
     <>
@@ -10,7 +11,7 @@ export default function VideoPlayer() {
       <div className="p-6 max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold mb-4">Playing Video ID: {id}</h2>
         <video
-          src={`http://localhost:5000/api/video/${id}?t=${Date.now()}`}
+          src={`${apiUrl}/api/video/${id}?t=${Date.now()}`}
           controls
           className="w-full max-w-4xl mx-auto rounded shadow"
         />

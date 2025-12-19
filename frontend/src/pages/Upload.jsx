@@ -13,6 +13,9 @@ export default function Upload() {
   const [isUploading, setIsUploading] = useState(false);
   const [processingProgress, setProcessingProgress] = useState(0);
 
+  const apiUrl = import.meta.env.VITE_BACKEND;
+
+
   useEffect(() => {
     socket.on("processing-update", (data) => {
       setProcessingProgress(data.progress);
@@ -42,7 +45,7 @@ export default function Upload() {
 
     setIsUploading(true);
     try {
-      await axios.post("http://localhost:5000/api/videos/upload", formData, {
+      await axios.post(`${apiUrl}/api/videos/upload`, formData, {
         headers: {
           Authorization: `Bearer ${user.token}`,
           "Content-Type": "multipart/form-data",

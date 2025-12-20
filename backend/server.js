@@ -7,7 +7,8 @@ const { Server } = require("socket.io");
 
 const authRoutes = require("./routes/Auth.js");
 const videoRoutes = require("./routes/Video.js");
-
+const port = process.env.PORT || 5000;
+const dbUrl = process.env.MONGO_URL;
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });
@@ -30,9 +31,9 @@ app.use("/api/videos", videoRoutes);
 app.get("/test", (req, res) => res.send("Backend is working!"));
 io.on("connection", () => console.log("Client connected"));
 
-mongoose.connect("mongodb+srv://vijaykeerthi_db_user:MKQ1XR3AU0PClyf4@pulsecluster.zqgoiw2.mongodb.net/VideoApp")
+mongoose.connect(dbUrl)
   .then(() => console.log("MongoDB connected"))
   .catch(console.error);
 
 
-  server.listen(5000, () => console.log("Server running on port 5000"));
+  server.listen(port, () => console.log("Server running on port 5000"));

@@ -14,7 +14,7 @@ export default function Register() {
       alert("Registration successful! Please login.");
       navigate("/login");
     } catch (err) {
-      alert(`${apiUrl}/api/auth/register`);
+     console.log(apiUrl);
       alert(err.response?.data?.message || "Registration failed");
     }
   };

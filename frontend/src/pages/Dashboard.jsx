@@ -9,7 +9,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-const apiUrl = import.meta.env.VITE_BACKEND;
+const apiUrl = "https://pulse-assesment-backend.onrender.com";
 
 
 

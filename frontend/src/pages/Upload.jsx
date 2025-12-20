@@ -13,7 +13,7 @@ export default function Upload() {
   const [isUploading, setIsUploading] = useState(false);
   const [processingProgress, setProcessingProgress] = useState(0);
 
-  const apiUrl = import.meta.env.VITE_BACKEND;
+  const apiUrl ="https://pulse-assesment-backend.onrender.com";
 
 
   useEffect(() => {

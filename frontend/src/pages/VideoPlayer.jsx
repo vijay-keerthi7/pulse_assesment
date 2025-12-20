@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 
 export default function VideoPlayer() {
   const { id } = useParams();
-  const apiUrl = import.meta.env.VITE_BACKEND;
+  const apiUrl = "https://pulse-assesment-backend.onrender.com";
 
   return (
     <>

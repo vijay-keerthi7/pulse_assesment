@@ -5,7 +5,7 @@ import axios from "axios";
 export default function Register() {
   const [formData, setFormData] = useState({ name: "", email: "", password: "", role: "user" });
   const navigate = useNavigate();
-
+  const apiUrl="https://pulse-assesment-backend.onrender.com";
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
@@ -14,7 +14,7 @@ export default function Register() {
       alert("Registration successful! Please login.");
       navigate("/login");
     } catch (err) {
-     console.log(apiUrl);
+     
       alert(err.response?.data?.message || "Registration failed");
     }
   };

@@ -11,7 +11,7 @@ console.log(apiUrl);
     e.preventDefault();
     try {
 
-      await axios.post("https://pulse-assesment.azurewebsites.net/api/auth/register", formData);
+      await axios.post(`${apiUrl}/api/auth/register`, formData);
       alert("Registration successful! Please login.");
       navigate("/login");
     } catch (err) {
@@ -71,11 +71,11 @@ console.log(apiUrl);
             type="submit"
             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            Register
+            Register Here
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-gray-600">
+        <p className="mt-6 text-center text-sm text-red-200">
           Already have an account?{" "}
           <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500">
             Sign in here

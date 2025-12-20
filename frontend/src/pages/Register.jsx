@@ -5,8 +5,7 @@ import axios from "axios";
 export default function Register() {
   const [formData, setFormData] = useState({ name: "", email: "", password: "", role: "user" });
   const navigate = useNavigate();
-const apiUrl = import.meta.env.VITE_BACKEND;
-console.log(apiUrl);
+
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
@@ -15,6 +14,7 @@ console.log(apiUrl);
       alert("Registration successful! Please login.");
       navigate("/login");
     } catch (err) {
+      alert(`${apiUrl}/api/auth/register`);
       alert(err.response?.data?.message || "Registration failed");
     }
   };

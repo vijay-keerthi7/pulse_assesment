@@ -5,8 +5,7 @@ exports.auth = (req, res, next) => {
   const authHeader = req.headers.authorization;
   const token = (authHeader && authHeader.split(" ")[1]) || req.query.token;
 
-  // Add this log to see exactly what is arriving
-  console.log("Token Received:", token); 
+ 
 
   if (!token || token === "undefined" || token === "null") {
     return res.status(401).json({ message: "No valid token provided" });
